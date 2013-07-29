@@ -1,13 +1,17 @@
 SoundbudSocial::Application.routes.draw do
+  devise_for :users
+
   get 'welcome' => 'home#welcome'
   get 'design' => 'home#design'
 
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
-    get 'auth/shopify/callback' => :show
+    #  get 'auth/shopify/callback' => :show
     delete 'logout' => :destroy
   end
+
+  match '/auth/:provider/callback' => 'authentications#create'
 
   root :to => 'home#index'
   # The priority is based upon order of creation:

@@ -5,7 +5,7 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'mysql2'
 
 
 # Gems used only for assets and not required
@@ -21,6 +21,17 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+# Social
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+
+# Authenticate
+gem 'devise', '>= 2.1.2'
+gem 'devise_invitable', '>= 1.1.1'
+
+gem 'simple_form', '>= 2.0.4'
 
 gem 'shopify_app'
 
