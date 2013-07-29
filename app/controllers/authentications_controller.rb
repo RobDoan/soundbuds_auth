@@ -8,7 +8,7 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = 'Signed in successfully.'
       user = authentication.user
       sign_in(:user, user)
-      login_shopify_token_link(user)
+      redirect_to login_shopify_token_link(user)
     else
       user = User.new
       user.apply_omniauth(omniauth)
