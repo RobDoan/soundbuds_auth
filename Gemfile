@@ -35,6 +35,7 @@ gem 'simple_form', '>= 2.0.4'
 
 gem 'shopify_app'
 
+gem 'settingslogic'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -54,3 +55,11 @@ group :development, :test do
   gem "less-rails-bootstrap"
   gem "therubyracer", :platforms => :ruby
 end
+
+group :deployment do
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'capistrano-rbenv'
+  gem 'passenger'
+end
+

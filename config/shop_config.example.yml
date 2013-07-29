@@ -1,0 +1,13 @@
+default: &default
+  mulit_pass_key: '6019ce563c5f880e3f3e43f31bbf55fc'
+  shopify_login_url: 'https://soundbud-dev.myshopify.com/account/login/multipass/'
+  facebook:
+    api_key: 551001374959737
+    secret_key: b1a6cb92b4a6e3984583a8bad4460585
+  google:
+    client_id: 105358333984.apps.googleusercontent.com
+    client_secret: cnFgpbNvwkpzLlgDIYGxEmgt
+
+development:
+  <<: *default
+
