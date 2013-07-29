@@ -8,8 +8,7 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = 'Signed in successfully.'
       user = authentication.user
       sign_in(:user, user)
-      token = ShopifyMultipass.new("6019ce563c5f880e3f3e43f31bbf55fc").generate_token(user.customer_shopify_data)
-      redirect_to "https://soundbud-dev.myshopify.com/account/login/multipass/#{token}"
+      login_shopify_token_link(user)
     else
       user = User.new
       user.apply_omniauth(omniauth)
@@ -17,14 +16,19 @@ class AuthenticationsController < ApplicationController
         flash[:notice] = 'Signed in successfully.'
         session[:new_user] = true
         sign_in(:user, user)
-        token = ShopifyMultipass.new("6019ce563c5f880e3f3e43f31bbf55fc").generate_token(user.customer_shopify_data)
-        redirect_to "https://soundbud-dev.myshopify.com/account/login/multipass/#{token}"
+        redirect_to login_shopify_token_link(user)
       else
         session[:omniauth] = omniauth.except('extra')
         flash[:error] = 'log in failure'
         redirect_to root_url
       end
     end
+  end
+
+  protected
+  def login_shopify_token_link(user)
+    token = ShopifyMultipass.new(ShopConfig.mulit_pass_key).generate_token(user.customer_shopify_data)
+    "#{ShopConfig.shopify_login_url}#{token}"
   end
 
 end
